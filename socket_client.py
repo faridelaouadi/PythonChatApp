@@ -9,19 +9,15 @@ client_socket = None
 def connect(ip, port, my_username, error_callback):
 
     global client_socket
-
     # Create a socket
-    # socket.AF_INET - address family, IPv4, some otehr possible are AF_INET6, AF_BLUETOOTH, AF_UNIX
-    # socket.SOCK_STREAM - TCP, conection-based, socket.SOCK_DGRAM - UDP, connectionless, datagrams, socket.SOCK_RAW - raw IP packets
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
     try:
         # Connect to a given ip and port
         client_socket.connect((ip, port))
     except Exception as e:
         # Connection error
         error_callback('Connection error: {}'.format(str(e)))
-        print("connection error")
+        print("Connection error")
         return False
 
     # Prepare username and header and send them

@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout  # one of many layout structures
 from kivy.uix.textinput import TextInput  # allow for ...text input.
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.actionbar import ActionBar
 import os
 from kivy.uix.screenmanager import ScreenManager, Screen
 import socket_client
@@ -13,6 +14,7 @@ from kivy.clock import Clock
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
 from kivy.uix.popup import Popup
+from kivy.lang import Builder
 import sys
 
 
@@ -144,14 +146,15 @@ class InfoPage(GridLayout):
     def update_text_width(self, *_):
         self.message.text_size = (self.message.width * 0.9, None)
 
+
 class ChatPage(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+
         # We are going to use 1 column and 2 rows
         self.cols = 1
         self.rows = 2
-
         # First row is going to be occupied by our scrollable label
         # We want it be take 90% of app height
         self.history = ScrollableLabel(height=Window.size[1]*0.9, size_hint_y=None)
@@ -318,6 +321,7 @@ class EpicApp(App):
         screen = Screen(name='Info')
         screen.add_widget(self.info_page)
         self.screen_manager.add_widget(screen)
+
 
         return self.screen_manager
     def create_chat_page(self):
