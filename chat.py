@@ -13,6 +13,7 @@ from kivy.clock import Clock
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
 from kivy.uix.popup import Popup
+import sys
 
 
 kivy.require("1.11.0")  # make sure people running py file have right version
@@ -328,7 +329,7 @@ class EpicApp(App):
 def show_error(message):
     chat_app.info_page.update_info(message)
     chat_app.screen_manager.current = 'Info'
-    Clock.schedule_once(sys.exit, 10)
+    Clock.schedule_once(sys.exit(), 10)
 
 # Run the app.
 if __name__ == "__main__":

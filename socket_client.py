@@ -21,6 +21,7 @@ def connect(ip, port, my_username, error_callback):
     except Exception as e:
         # Connection error
         error_callback('Connection error: {}'.format(str(e)))
+        print("connection error")
         return False
 
     # Prepare username and header and send them
